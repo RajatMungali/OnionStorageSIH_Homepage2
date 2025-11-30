@@ -27,12 +27,19 @@
         --bg-offwhite: #fdfbf7;
         --success-green: #00c853;
         --danger-red: #ff3d00;
+        /* New Bamboo Premium Colors */
+        --bamboo-dark: #0f3b18;
+        --bamboo-light: #e8f5e9;
       }
 
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
@@ -199,7 +206,7 @@
         color: var(--accent-purple);
       }
 
-      /* --- 3. THE SOLUTION (TEXT FILL ANIMATION) --- */
+      /* --- 3. THE SOLUTION (TEXT FILL) --- */
       .solution-section {
         padding: 120px 10%;
         background: white;
@@ -228,7 +235,6 @@
         color: var(--accent-purple);
       }
 
-      /* Arrows Animation */
       .arrow-container {
         position: absolute;
         right: 5%;
@@ -265,62 +271,7 @@
         }
       }
 
-      /* --- 4. PRODUCT SHOWCASE --- */
-      .product-section {
-        padding: 100px 5%;
-        background: var(--bg-offwhite);
-      }
-      .product-wrapper {
-        position: relative;
-        max-width: 1000px;
-        margin: 0 auto;
-        height: 500px;
-        background: url("https://images.unsplash.com/photo-1599583236053-5eb72e3827b7?q=80&w=206")
-          center/cover;
-        border-radius: 20px;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-      }
-
-      .hotspot {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background: var(--accent-purple);
-        border-radius: 50%;
-        cursor: pointer;
-        animation: pulse 2s infinite;
-      }
-      .hotspot::after {
-        content: attr(data-label);
-        position: absolute;
-        left: 30px;
-        top: -5px;
-        background: white;
-        padding: 5px 15px;
-        white-space: nowrap;
-        font-weight: 700;
-        border-radius: 5px;
-        opacity: 0;
-        transition: 0.3s;
-        pointer-events: none;
-      }
-      .hotspot:hover::after {
-        opacity: 1;
-      }
-
-      @keyframes pulse {
-        0% {
-          box-shadow: 0 0 0 0 rgba(98, 0, 234, 0.7);
-        }
-        70% {
-          box-shadow: 0 0 0 15px rgba(98, 0, 234, 0);
-        }
-        100% {
-          box-shadow: 0 0 0 0 rgba(98, 0, 234, 0);
-        }
-      }
-
-      /* --- 5. YOLOv11 & 6. IOT --- */
+      /* --- 5. TECH DUO / IOT DETECTION (MODIFIED) --- */
       .tech-duo {
         display: flex;
         flex-wrap: wrap;
@@ -333,162 +284,47 @@
         flex-direction: column;
         justify-content: center;
       }
-
+      /* REPLACED BLACK BG WITH IMAGE PLACEHOLDER */
       .yolo-bg {
-        background: #111;
+        /* FIXED: Used the direct image source URL instead of the website URL */
+        background: url("https://images.unsplash.com/photo-1605197378298-02bf0af1c896?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+          center/cover no-repeat;
         color: white;
         position: relative;
         overflow: hidden;
       }
-      .iot-bg {
-        background: white;
-      }
 
-      .yolo-frame {
-        border: 2px solid var(--success-green);
-        padding: 20px;
-        margin-top: 30px;
-        position: relative;
-        background: rgba(0, 200, 83, 0.1);
-      }
-      .bbox {
-        position: absolute;
-        border: 2px solid red;
-        top: 40%;
-        left: 30%;
-        width: 100px;
-        height: 100px;
-      }
-      .bbox::before {
-        content: "Rot 98%";
-        background: red;
-        color: white;
-        font-size: 0.8rem;
-        padding: 2px 5px;
-        position: absolute;
-        top: -20px;
-        left: 0;
-      }
-
-      /* --- 7. DASHBOARD --- */
-      .dash-section {
-        padding: 100px 5%;
-        background: var(--accent-purple-light);
-      }
-      .dash-ui {
-        background: white;
-        border-radius: 15px;
-        padding: 20px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        max-width: 1100px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 200px 1fr;
-        gap: 20px;
-      }
-      .dash-nav li {
-        list-style: none;
-        padding: 10px;
-        border-radius: 5px;
-        margin-bottom: 5px;
-        color: #666;
-      }
-      .dash-nav li.active {
-        background: var(--accent-purple);
-        color: white;
-      }
-
-      .dash-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-      }
-      .d-card {
-        border: 1px solid #eee;
-        padding: 15px;
-        border-radius: 10px;
-      }
-      .risk-high {
-        color: var(--danger-red);
-        font-weight: bold;
-      }
-
-      /* --- 8. IMPACT TIMELINE --- */
-      .impact-section {
-        padding: 100px 5%;
-        background: white;
-      }
-      .timeline {
-        position: relative;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 40px 0;
-      }
-      .timeline::before {
+      /* Overlay to make text readable */
+      .yolo-bg::before {
         content: "";
         position: absolute;
-        left: 50%;
         top: 0;
-        bottom: 0;
-        width: 2px;
-        background: var(--accent-purple);
-      }
-      .t-item {
-        padding: 20px;
-        position: relative;
-        width: 50%;
-      }
-      .t-item:nth-child(odd) {
         left: 0;
-        text-align: right;
-        padding-right: 40px;
+        width: 100%;
+        height: 100%;
+        background: rgba(
+          0,
+          0,
+          0,
+          0.6
+        ); /* Adjust 0.6 to make it darker/lighter */
+        z-index: 1;
       }
-      .t-item:nth-child(even) {
-        left: 50%;
-        padding-left: 40px;
-      }
-      .t-dot {
-        position: absolute;
-        top: 30px;
-        width: 20px;
-        height: 20px;
-        background: white;
-        border: 4px solid var(--accent-purple);
-        border-radius: 50%;
+
+      .yolo-content {
+        position: relative;
         z-index: 2;
       }
-      .t-item:nth-child(odd) .t-dot {
-        right: -10px;
+
+      .yolo-bg > * {
+        position: relative;
+        z-index: 2;
       }
-      .t-item:nth-child(even) .t-dot {
-        left: -10px;
+      .iot-bg {
+        background: var(--bg-offwhite);
       }
 
-      /* --- 9. TECH STACK --- */
-      .stack-section {
-        padding: 80px 5%;
-        background: #1a1a1a;
-        color: white;
-      }
-      .stack-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        margin-top: 40px;
-      }
-      .stack-card {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        text-align: center;
-        transition: 0.3s;
-      }
-      .stack-card:hover {
-        border-color: var(--accent-purple);
-        transform: translateY(-5px);
-      }
-
-      /* --- 10. BEFORE VS AFTER --- */
+      /* --- 6. BEFORE VS AFTER --- */
       .compare-section {
         display: flex;
         height: 600px;
@@ -505,59 +341,261 @@
         position: relative;
       }
       .c-before {
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-          url("https://images.unsplash.com/photo-1615485925763-867862f8546b?q=80&w=2070");
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+          url("https://images.unsplash.com/photo-1596450650998-f274cb3d790d?q=80&w=2070&auto=format&fit=crop");
         background-size: cover;
       }
       .c-after {
         background: linear-gradient(
-            rgba(98, 0, 234, 0.7),
-            rgba(98, 0, 234, 0.7)
+            rgba(98, 0, 234, 0.6),
+            rgba(98, 0, 234, 0.8)
           ),
-          url("https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2070");
+          url("https://images.unsplash.com/photo-1618512496248-a07fe83aa82e?q=80&w=2070&auto=format&fit=crop");
         background-size: cover;
       }
+      .c-label {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
 
-      /* --- 11. PRICING --- */
-      .pricing-section {
+      /* --- NEW BENEFITS GRID --- */
+      .benefits-section {
+        padding: 100px 10%; /* Increased side padding for focus */
+        background: white;
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 60px;
+      }
+
+      .b-card {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 20px;
+        border: 1px solid #eee;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      /* Hover Effect: Lift up + Purple Border + Glow */
+      .b-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent-purple);
+        box-shadow: 0 20px 50px rgba(98, 0, 234, 0.1);
+      }
+
+      .b-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--accent-purple-light);
+        color: var(--accent-purple);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+        transition: 0.3s;
+      }
+
+      .b-card:hover .b-icon {
+        background: var(--accent-purple);
+        color: white;
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .b-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        color: var(--text-dark);
+      }
+
+      .b-card p {
+        font-size: 0.95rem;
+        color: #666;
+        line-height: 1.7;
+      }
+
+      @media (max-width: 768px) {
+        .benefits-section {
+          padding: 80px 5%;
+        }
+      }
+
+      /* --- 8. BAMBOO SECTION (PREMIUM DARK GREEN) --- */
+      .bamboo-section {
+        padding: 100px 5%;
+        background: #f1f8f3; /* Very light green hint */
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+      .bamboo-img {
+        flex: 1;
+        height: 500px;
+        /* Placeholder for bamboo image */
+        background: url("https://images.unsplash.com/photo-1596726848069-c27b0b3014c0?q=80&w=2070&auto=format&fit=crop")
+          center/cover;
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(15, 59, 24, 0.2);
+      }
+      .bamboo-content {
+        flex: 1;
+      }
+      .bamboo-content h2 {
+        font-size: 3rem;
+        margin-bottom: 25px;
+        color: var(--bamboo-dark); /* Dark Green */
+      }
+      .bamboo-content p {
+        color: #2e5c38;
+      }
+      .bamboo-list {
+        list-style: none;
+        margin-top: 30px;
+      }
+      .bamboo-list li {
+        font-size: 1.3rem;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-family: "Poppins", sans-serif;
+        color: var(--bamboo-dark);
+        font-weight: 500;
+        /* Slide in preparation */
+        opacity: 0; /* Handled by AOS */
+        transform: translateX(50px); /* Handled by AOS */
+      }
+      .bamboo-list i {
+        color: var(--bamboo-dark);
+        font-size: 1.5rem;
+        background: rgba(15, 59, 24, 0.1);
+        padding: 10px;
+        border-radius: 50%;
+      }
+
+      /* --- 9. IMPACT STATS (REMOVED BLACK BG) --- */
+      .results-section {
+        padding: 80px 5%;
+        background: white; /* Changed from Black */
+        color: var(--text-dark);
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+      }
+      .results-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        text-align: center;
+      }
+      .res-num {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: var(--accent-purple); /* Keep accent color for numbers */
+      }
+      .res-text {
+        font-size: 1rem;
+        color: #555; /* Dark gray instead of light gray */
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+
+      /* --- 10. TESTIMONIALS --- */
+      .test-section {
         padding: 100px 5%;
         background: var(--bg-offwhite);
         text-align: center;
       }
-      .pricing-wrapper {
-        display: flex;
-        justify-content: center;
+      .test-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 30px;
         margin-top: 50px;
-        flex-wrap: wrap;
       }
-      .p-card {
+      .test-card {
+        padding: 30px;
         background: white;
-        padding: 40px;
-        width: 300px;
+        border-radius: 15px;
+        text-align: left;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        border-top: 5px solid #ccc;
       }
-      .p-card.featured {
-        border-top: 5px solid var(--accent-purple);
-        transform: scale(1.05);
+      .test-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
       }
-
-      /* --- 12. TESTIMONIALS --- */
-      .test-section {
-        padding: 80px 15%;
-        text-align: center;
+      .test-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
       }
-      .quote {
-        font-size: 1.5rem;
+      .test-quote {
         font-style: italic;
         color: #555;
+        font-size: 0.95rem;
       }
 
-      /* --- 13. CONTACT FORM --- */
+      /* --- 11. FAQ --- */
+      .faq-section {
+        padding: 80px 20%;
+        background: white;
+      }
+      .faq-item {
+        background: white;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: 1px solid #eee;
+      }
+      .faq-item details {
+        padding: 20px;
+      }
+      .faq-item summary {
+        font-weight: 700;
+        cursor: pointer;
+        list-style: none;
+        position: relative;
+        padding-right: 30px;
+        color: var(--text-dark);
+      }
+      .faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+      .faq-item summary::after {
+        content: "+";
+        position: absolute;
+        right: 0;
+        font-size: 1.5rem;
+        color: var(--accent-purple);
+        line-height: 1rem;
+      }
+      .faq-item details[open] summary::after {
+        content: "-";
+      }
+      .faq-item p {
+        margin-top: 15px;
+        font-size: 0.9rem;
+      }
+
+      /* --- 12. CONTACT & FOOTER --- */
       .contact-section {
         padding: 100px 5%;
-        background: white;
+        background: var(--bg-offwhite);
       }
       .form-box {
         max-width: 600px;
@@ -578,14 +616,6 @@
         outline: none;
       }
 
-      /* --- 14. TEAM --- */
-      .team-section {
-        padding: 60px 5%;
-        background: var(--bg-offwhite);
-        text-align: center;
-      }
-
-      /* --- 15. FOOTER --- */
       footer {
         background: #111;
         color: #888;
@@ -609,28 +639,28 @@
         }
         .stat-grid,
         .tech-duo,
-        .dash-ui,
         .compare-section,
-        .pricing-wrapper {
+        .bamboo-section,
+        .zigzag-row {
           display: block;
         }
         .tech-half {
           min-width: 100%;
         }
-        .dash-grid {
-          grid-template-columns: 1fr;
+        .bamboo-img {
+          height: 300px;
+          margin-bottom: 30px;
         }
-        .timeline::before {
-          left: 20px;
+        .zigzag-image {
+          height: 200px;
+          margin-bottom: 20px;
         }
-        .t-item {
-          width: 100%;
-          text-align: left !important;
-          padding-left: 50px !important;
+        .zigzag-row {
+          margin-bottom: 50px;
+          gap: 20px;
         }
-        .t-item:nth-child(odd) .t-dot,
-        .t-item:nth-child(even) .t-dot {
-          left: 10px;
+        .faq-section {
+          padding: 80px 5%;
         }
         .nav-links {
           display: none;
@@ -643,12 +673,17 @@
       <div class="logo">SOS<span>.</span></div>
       <div class="nav-links">
         <a href="#problem">Problem</a>
-        <a href="#product">Product</a>
-        <a href="#tech">Tech</a>
+        <a href="#model-3d">Product</a>
+        <a href="#benefits">Benefits</a>
         <a
           href="#contact"
           class="btn-primary"
-          style="padding: 8px 20px; margin-left: 20px; text-decoration: none"
+          style="
+            padding: 8px 20px;
+            margin-left: 20px;
+            text-decoration: none;
+            color: white;
+          "
           >Demo</a
         >
       </div>
@@ -661,45 +696,47 @@
 
       <div class="hero-content" data-aos="fade-up">
         <div class="hero-tag">AI + IoT + Bamboo</div>
-        <h1>Smart Onion Storage<br />Management System</h1>
+        <h1>Zero-Loss Onion Storage<br />for Indian Farmers</h1>
         <p style="color: white; font-size: 1.2rem; margin-bottom: 30px">
-          Zero-Loss engineering for Indian Agriculture. Detected by YOLOv11,
-          Protected by Bamboo.
+          Detected by YOLOv11, Protected by Bamboo.
         </p>
         <div>
-          <a href="#product" class="btn btn-primary">Explore Product</a>
-          <a href="#demo" class="btn btn-outline" style="margin-left: 15px"
-            >See Demo</a
+          <a href="#model-3d" class="btn btn-primary">Explore Product</a>
+          <a href="#contact" class="btn btn-outline" style="margin-left: 15px"
+            >Contact Us</a
           >
         </div>
       </div>
     </section>
 
     <section id="problem" class="problem-section">
-      <h2 class="section-title">Why We Need This</h2>
+      <h2 class="section-title">Why Onion Storage Fails</h2>
       <div class="stat-grid">
         <div class="stat-card" data-aos="fade-up">
           <div class="stat-num">40%</div>
-          <p>Post-harvest onions lost to rot annually.</p>
+          <p>Annual Post-Harvest Loss.</p>
         </div>
         <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
           <div class="stat-num">
             <i class="fa-solid fa-temperature-arrow-up"></i>
           </div>
-          <p>Uncontrolled heat & humidity spikes.</p>
+          <p>Uncontrolled Heat Spikes.</p>
         </div>
         <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
           <div class="stat-num"><i class="fa-solid fa-eye-slash"></i></div>
-          <p>No visibility into internal crate layers.</p>
+          <p>Invisible Rot Inside Crates.</p>
         </div>
         <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
           <div class="stat-num">₹Cr</div>
-          <p>Billions lost by Indian farmers.</p>
+          <p>Financial Loss for Farmers.</p>
         </div>
       </div>
     </section>
 
     <section class="solution-section">
+      <h2 style="text-align: center; margin-bottom: 40px; display: none">
+        Our Solution: Smart Onion Storage
+      </h2>
       <p class="fill-text" id="fillTarget">
         SOS is a full-stack solution. We combine
         <span class="highlight">Layer-engineered Bamboo</span> crates with
@@ -709,42 +746,14 @@
       </p>
       <div class="arrow-container">
         <i class="fa-solid fa-arrow-up arrow-icon"></i>
-        <i class="fa-solid fa-arrow-up arrow-icon"></i>
-        <i class="fa-solid fa-arrow-up arrow-icon"></i>
       </div>
     </section>
 
-    <section id="product" class="product-section">
-      <h2 class="section-title">Smart Crate Architecture</h2>
-      <div class="product-wrapper">
-        <div
-          class="hotspot"
-          style="top: 20%; left: 30%"
-          data-label="Ventilation Grid"
-        ></div>
-        <div
-          class="hotspot"
-          style="top: 40%; left: 50%"
-          data-label="ESP32-CAM AI"
-        ></div>
-        <div
-          class="hotspot"
-          style="top: 60%; left: 20%"
-          data-label="Bamboo Layers"
-        ></div>
-        <div
-          class="hotspot"
-          style="top: 70%; left: 70%"
-          data-label="Gas Sensors"
-        ></div>
-      </div>
-    </section>
     <section id="model-3d" style="padding: 100px 5%; background: white">
-      <h2 class="section-title">3D Smart Crate Model</h2>
+      <h2 class="section-title">Explore the Product</h2>
       <p style="text-align: center; margin-bottom: 30px; color: #555">
-        Explore our bamboo-engineered smart crate in full 3D.
+        Interactive 3D Bamboo Smart Crate
       </p>
-
       <div
         id="stl-viewer"
         style="
@@ -754,8 +763,6 @@
           background: #f4f0ff;
         "
       ></div>
-
-      <!-- ✅ Add this HERE -->
       <div
         id="status"
         style="
@@ -769,24 +776,38 @@
 
     <section class="tech-duo">
       <div class="tech-half yolo-bg">
-        <h2 style="color: white">
-          <i class="fa-solid fa-eye"></i> YOLOv11 Detection
-        </h2>
-        <p style="color: #aaa">
-          Our ESP32-CAM captures periodic images. The YOLOv11 model analyzes
-          skin texture for early fungal indications.
-        </p>
-
-        <div class="yolo-frame">
-          <p style="font-family: monospace; color: var(--success-green)">
-            >> ANALYZING FRAME_042...
+        <div class="yolo-content">
+          <h2 style="color: white">
+            <i class="fa-solid fa-eye"></i> Intelligent Detection
+          </h2>
+          <p style="color: #eee; margin-bottom: 20px">
+            See how our system analyzes onion quality in real-time.
           </p>
-          <div class="bbox"></div>
+          <a href="#demo" style="display: inline-block; text-decoration: none">
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(5px);
+                padding: 15px 25px;
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                border-radius: 50px;
+                color: white;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                transition: 0.3s;
+              "
+            >
+              <i class="fa-solid fa-play-circle" style="font-size: 1.5rem"></i>
+              View Live Analysis
+            </div>
+          </a>
         </div>
       </div>
       <div class="tech-half iot-bg">
         <h2 style="color: var(--accent-purple)">
-          <i class="fa-solid fa-wifi"></i> IoT Ecosystem
+          <i class="fa-solid fa-wifi"></i> Sensor Ecosystem
         </h2>
         <p>Real-time environment sensing.</p>
         <div style="margin-top: 30px">
@@ -818,194 +839,231 @@
             ></i>
             <div><strong>MQ-135</strong><br />Ammonia & Ethylene Gas</div>
           </div>
-          <div style="display: flex; align-items: center; gap: 20px">
-            <i
-              class="fa-solid fa-microchip"
-              style="font-size: 2rem; color: var(--accent-purple)"
-            ></i>
-            <div><strong>ESP32</strong><br />Wi-Fi Microcontroller</div>
-          </div>
         </div>
       </div>
     </section>
+    <section id="benefits" class="benefits-section">
+      <h2 class="section-title">Key Benefits of SOSMS</h2>
 
-    <section id="demo" class="dash-section">
-      <h2 class="section-title">Farmer's Dashboard</h2>
-      <div class="dash-ui">
-        <ul class="dash-nav">
-          <li class="active">
-            <i class="fa-solid fa-chart-line"></i> Overview
+      <div class="benefits-grid">
+        <div class="b-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="b-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>Reduce Losses by >40%</h3>
+          <p>
+            Target the root causes of rot immediately using precision
+            engineering, saving nearly half of the produce that usually goes to
+            waste.
+          </p>
+        </div>
+
+        <div class="b-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="b-icon"><i class="fa-solid fa-eye"></i></div>
+          <h3>Early Rot Detection</h3>
+          <p>
+            Our YOLOv11 AI model scans surface textures to identify fungal
+            infections days before they become visible to the human eye.
+          </p>
+        </div>
+
+        <div class="b-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="b-icon"><i class="fa-solid fa-fan"></i></div>
+          <h3>Auto Climate Control</h3>
+          <p>
+            Smart sensors trigger ventilation fans automatically when humidity
+            spikes, maintaining the perfect storage environment.
+          </p>
+        </div>
+
+        <div class="b-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="b-icon"><i class="fa-solid fa-solar-panel"></i></div>
+          <h3>Works in Rural India</h3>
+          <p>
+            Designed for low-bandwidth areas. It runs on low power, works
+            completely offline, and syncs data only when connectivity is
+            available.
+          </p>
+        </div>
+
+        <div class="b-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="b-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+          <h3>Dashboard + SMS</h3>
+          <p>
+            Get rich data on the web dashboard or simple, critical alerts via
+            SMS on basic feature phones.
+          </p>
+        </div>
+
+        <div class="b-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="b-icon"><i class="fa-solid fa-users"></i></div>
+          <h3>Community Affordable</h3>
+          <p>
+            Our pricing model allows Farmer Producer Organizations (FPOs) to
+            pool resources, making smart storage accessible to everyone.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="bamboo-section">
+      <div
+        class="bamboo-img"
+        data-aos="fade-right"
+        style="
+          background-image: url('https://plus.unsplash.com/premium_photo-1694864661950-288ec8a06e5c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+          background-size: cover;
+          background-position: center;
+        "
+      ></div>
+      <div class="bamboo-content">
+        <h2>Why Bamboo?</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 30px">
+          The Natural Advantage.
+        </p>
+        <ul class="bamboo-list">
+          <li data-aos="fade-left" data-aos-delay="100">
+            <i class="fa-solid fa-check-circle"></i> Eco-friendly & Sustainable
           </li>
-          <li><i class="fa-solid fa-box"></i> Crate Status</li>
-          <li><i class="fa-solid fa-bell"></i> Alerts (2)</li>
+          <li data-aos="fade-left" data-aos-delay="200">
+            <i class="fa-solid fa-check-circle"></i> Naturally Breathable
+            Structure
+          </li>
+          <li data-aos="fade-left" data-aos-delay="300">
+            <i class="fa-solid fa-check-circle"></i> Reduces Moisture
+            Accumulation
+          </li>
+          <li data-aos="fade-left" data-aos-delay="400">
+            <i class="fa-solid fa-check-circle"></i> Low Cost & Locally
+            Available
+          </li>
         </ul>
-        <div>
-          <h3 style="margin-bottom: 20px">Storage Unit A</h3>
-          <div class="dash-grid">
-            <div class="d-card">
-              <small>Avg Temp</small>
-              <h2>24°C</h2>
-            </div>
-            <div class="d-card">
-              <small>Avg Humidity</small>
-              <h2>55%</h2>
-            </div>
-            <div class="d-card" style="border-color: red; background: #fff0f0">
-              <small>Action Req.</small>
-              <h2 class="risk-high">Crate A4</h2>
-            </div>
-          </div>
-          <div
-            style="
-              margin-top: 20px;
-              height: 200px;
-              background: #f9f9f9;
-              border-radius: 10px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              color: #ccc;
-            "
-          >
-            [ Live Graph Visualization Placeholder ]
-          </div>
-        </div>
       </div>
     </section>
 
-    <section class="impact-section">
-      <h2 class="section-title">The Impact</h2>
-      <div class="timeline">
-        <div class="t-item" data-aos="fade-right">
-          <div class="t-dot"></div>
-          <h3>Day 1: Storage</h3>
-          <p>
-            Bamboo crates allow natural ventilation, preventing initial moisture
-            buildup.
-          </p>
+    <section class="results-section">
+      <h2
+        class="section-title"
+        style="margin-bottom: 40px; color: var(--text-dark)"
+      >
+        Impact & Results
+      </h2>
+      <div class="results-grid">
+        <div data-aos="zoom-in">
+          <div class="res-num">0%</div>
+          <div class="res-text">Loss in Trials</div>
         </div>
-        <div class="t-item" data-aos="fade-left">
-          <div class="t-dot"></div>
-          <h3>Day 15: Monitoring</h3>
-          <p>
-            IoT sensors track humidity. If levels rise, ventilation fans are
-            triggered automatically.
-          </p>
+        <div data-aos="zoom-in" data-aos-delay="100">
+          <div class="res-num">98%</div>
+          <div class="res-text">YOLOv11 Accuracy</div>
         </div>
-        <div class="t-item" data-aos="fade-right">
-          <div class="t-dot"></div>
-          <h3>Day 30: AI Detection</h3>
-          <p>
-            YOLOv11 spots a single rotting onion in Crate B2 before it infects
-            neighbors.
-          </p>
+        <div data-aos="zoom-in" data-aos-delay="200">
+          <div class="res-num">50+</div>
+          <div class="res-text">Farmers Tested</div>
         </div>
-        <div class="t-item" data-aos="fade-left">
-          <div class="t-dot"></div>
-          <h3>Day 60: Profit</h3>
-          <p>
-            Storage extended by 1 month. Farmer sells at peak market price. 0%
-            Loss.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="tech" class="stack-section">
-      <h2 style="text-align: center">Technology Stack</h2>
-      <div class="stack-grid">
-        <div class="stack-card">
-          <h3>ESP32-CAM</h3>
-          <p>Hardware</p>
-        </div>
-        <div class="stack-card">
-          <h3>YOLOv11</h3>
-          <p>AI Model</p>
-        </div>
-        <div class="stack-card">
-          <h3>Python</h3>
-          <p>Backend</p>
-        </div>
-        <div class="stack-card">
-          <h3>React.js</h3>
-          <p>Dashboard</p>
-        </div>
-        <div class="stack-card">
-          <h3>MQ Sensors</h3>
-          <p>Gas Detection</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="compare-section">
-      <div class="compare-half c-before">
-        <h2>BEFORE</h2>
-        <p>Hidden Rot • Pressure Damage • High Loss</p>
-      </div>
-      <div class="compare-half c-after">
-        <h2>AFTER SOSMS</h2>
-        <p>Smart Alerts • Even Airflow • Max Profit</p>
-      </div>
-    </section>
-
-    <section class="pricing-section">
-      <h2>Pricing Packages</h2>
-      <div class="pricing-wrapper">
-        <div class="p-card">
-          <h3>Starter Kit</h3>
-          <h2>₹5,000</h2>
-          <p>1 Smart Crate + App</p>
-          <button
-            class="btn btn-outline"
-            style="background: #eee; color: black; margin-top: 20px"
-          >
-            Details
-          </button>
-        </div>
-        <div class="p-card featured">
-          <span
-            style="
-              background: var(--accent-purple);
-              color: white;
-              padding: 2px 10px;
-              border-radius: 10px;
-              font-size: 0.8rem;
-            "
-            >POPULAR</span
-          >
-          <h3>Farmer Bundle</h3>
-          <h2 style="color: var(--accent-purple)">₹18,000</h2>
-          <p>4 Crates + AI Alerts + SMS</p>
-          <button class="btn btn-primary" style="margin-top: 20px">
-            Buy Now
-          </button>
-        </div>
-        <div class="p-card">
-          <h3>Warehouse</h3>
-          <h2>Custom</h2>
-          <p>50+ Crates + API Integration</p>
-          <button
-            class="btn btn-outline"
-            style="background: #eee; color: black; margin-top: 20px"
-          >
-            Contact
-          </button>
+        <div data-aos="zoom-in" data-aos-delay="300">
+          <div class="res-num">24/7</div>
+          <div class="res-text">Continuous Monitoring</div>
         </div>
       </div>
     </section>
 
     <section class="test-section">
-      <p class="quote">
-        "SOSMS saved 30% of my harvest this season. The mobile alerts told me
-        exactly which crate had an issue."
-      </p>
-      <h4 style="margin-top: 20px; color: var(--accent-purple)">
-        — Rajesh Kumar, Nasik Onion Farmer
-      </h4>
+      <h2 class="section-title">Farmer Testimonials</h2>
+      <div class="test-grid">
+        <div class="test-card" data-aos="fade-up">
+          <div class="test-header">
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop"
+              class="test-img"
+              alt="Farmer"
+            />
+            <div>
+              <h4>Rajesh Kumar</h4>
+              <small>Nasik, Maharashtra</small>
+            </div>
+          </div>
+          <p class="test-quote">
+            "SOSMS saved 30% of my harvest this season. The mobile alerts told
+            me exactly which crate had an issue."
+          </p>
+        </div>
+        <div class="test-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="test-header">
+            <img
+              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200&auto=format&fit=crop"
+              class="test-img"
+              alt="Farmer"
+            />
+            <div>
+              <h4>Suresh Patil</h4>
+              <small>Pune, Maharashtra</small>
+            </div>
+          </div>
+          <p class="test-quote">
+            "The bamboo design is very sturdy and the technology is easy to use
+            even for my father."
+          </p>
+        </div>
+        <div class="test-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="test-header">
+            <img
+              src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?q=80&w=200&auto=format&fit=crop"
+              class="test-img"
+              alt="Farmer"
+            />
+            <div>
+              <h4>Anita Desai</h4>
+              <small>Solapur, Maharashtra</small>
+            </div>
+          </div>
+          <p class="test-quote">
+            "Zero loss this year. The investment paid for itself in just one
+            season of storage."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2 class="section-title">Frequently Asked Questions (FAQ)</h2>
+      <div class="faq-item">
+        <details>
+          <summary>How does early rot detection work?</summary>
+          <p>
+            We use a specialized AI model called YOLOv11 trained on thousands of
+            onion images. It detects subtle changes in skin texture.
+          </p>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>Do farmers need internet?</summary>
+          <p>
+            No, continuous internet is not required. The system works offline
+            and stores data locally.
+          </p>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>How accurate is the model?</summary>
+          <p>
+            Our current field tests show a 98% accuracy rate in detecting common
+            onion rot types.
+          </p>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>Can it work in extreme heat?</summary>
+          <p>
+            Yes. The bamboo structure naturally regulates temperature, and
+            electronics are heat-shielded.
+          </p>
+        </details>
+      </div>
     </section>
 
     <section id="contact" class="contact-section">
-      <h2 class="section-title">Get In Touch</h2>
+      <h2 class="section-title">Get Started / Contact Us</h2>
       <div class="form-box">
         <input type="text" placeholder="Your Name" />
         <input type="text" placeholder="Farm / Company Name" />
@@ -1020,15 +1078,6 @@
       </div>
     </section>
 
-    <section class="team-section">
-      <h3>Project by Team: BigO</h3>
-      <p>Smart India Hackathon 2025</p>
-      <p style="max-width: 600px; margin: 10px auto">
-        We are dedicated to solving the post-harvest loss crisis in India using
-        sustainable materials and advanced artificial intelligence.
-      </p>
-    </section>
-
     <footer>
       <div class="footer-grid">
         <div>
@@ -1036,8 +1085,8 @@
           <p>AI + IoT + Bamboo Engineering</p>
         </div>
         <div>
-          <div class="f-title">Tech Summary</div>
-          <p>ESP32-CAM • YOLOv11 • MQ-135 • ML Analytics</p>
+          <div class="f-title">Quick Links</div>
+          <p>Problem • Solution • Impact</p>
         </div>
         <div>
           <div class="f-title">Contact</div>
@@ -1060,41 +1109,35 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();
-
       // Text Fill Logic
       const textElement = document.getElementById("fillTarget");
-      const words = textElement.innerHTML.split(" ");
-      textElement.innerHTML = words
-        .map((word) => {
-          if (word.includes("<") || word.includes(">")) return word;
-          return `<span>${word}</span>`;
-        })
-        .join(" ");
+      if (textElement) {
+        const words = textElement.innerHTML.split(" ");
+        textElement.innerHTML = words
+          .map((word) => {
+            if (word.includes("<") || word.includes(">")) return word;
+            return `<span>${word}</span>`;
+          })
+          .join(" ");
 
-      const spans = document.querySelectorAll(".fill-text span");
-      window.addEventListener("scroll", () => {
-        const triggerBottom = window.innerHeight * 0.8;
-        spans.forEach((span) => {
-          const spanTop = span.getBoundingClientRect().top;
-          if (spanTop < triggerBottom) span.classList.add("active");
-          else span.classList.remove("active");
+        const spans = document.querySelectorAll(".fill-text span");
+        window.addEventListener("scroll", () => {
+          const triggerBottom = window.innerHeight * 0.8;
+          spans.forEach((span) => {
+            const spanTop = span.getBoundingClientRect().top;
+            if (spanTop < triggerBottom) span.classList.add("active");
+            else span.classList.remove("active");
+          });
         });
-      });
+      }
     </script>
-    <!-- THREE.js + Utilities -->
-
-    <!-- Load Three.js from CDN -->
-    <!-- 1) THREE.JS must load FIRST -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/MTLLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
 
     <script>
       const statusDiv = document.getElementById("status");
-
       function updateStatus(message, isError = false) {
         if (!statusDiv) return;
         statusDiv.textContent = message;
@@ -1104,8 +1147,6 @@
 
       try {
         const container = document.getElementById("stl-viewer");
-
-        // Scene setup
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0xf4f0ff);
 
@@ -1122,12 +1163,10 @@
         renderer.setPixelRatio(window.devicePixelRatio);
         container.appendChild(renderer.domElement);
 
-        // Controls
         const controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
         controls.dampingFactor = 0.04;
 
-        // 🌤 Natural lighting
         const ambient = new THREE.AmbientLight(0xffffff, 0.55);
         scene.add(ambient);
 
@@ -1139,14 +1178,12 @@
         fillLight.position.set(-200, 80, -150);
         scene.add(fillLight);
 
-        // Grid on ground
         const grid = new THREE.GridHelper(300, 30, 0xcccccc, 0xe0e0e0);
         grid.position.y = 0;
         scene.add(grid);
 
         updateStatus("Renderer initialized. Loading materials...");
 
-        // Load OBJ+MTL
         const mtlLoader = new THREE.MTLLoader();
         mtlLoader.load("obj.mtl", function (materials) {
           materials.preload();
@@ -1157,11 +1194,8 @@
 
           objLoader.load(
             "tinker.obj",
-
             function (object) {
               updateStatus("OBJ loaded. Processing model...");
-
-              // Remove shine for natural look
               object.traverse((child) => {
                 if (child.isMesh) {
                   child.material.shininess = 0;
@@ -1169,39 +1203,22 @@
                   child.material.reflectivity = 0;
                 }
               });
-
-              // 1) Center before transform
               const box1 = new THREE.Box3().setFromObject(object);
               const center1 = box1.getCenter(new THREE.Vector3());
               object.position.sub(center1);
-
-              // 2) Rotate correctly (Tinkercad → Three.js)
               object.rotation.x = -Math.PI / 2;
-
-              // 3) Recompute box after rotation
               const box2 = new THREE.Box3().setFromObject(object);
               const size = box2.getSize(new THREE.Vector3());
               const maxDim = Math.max(size.x, size.y, size.z);
-
-              // 4) Scale uniformly
               const scale = 70 / maxDim;
               object.scale.set(scale, scale, scale);
-
-              // 5) Recenter after scaling
               const center2 = box2.getCenter(new THREE.Vector3());
               object.position.sub(center2.multiplyScalar(scale));
-
-              // 6) Make model sit on grid (ground = y = 0)
               const box3 = new THREE.Box3().setFromObject(object);
               object.position.y -= box3.min.y;
-
-              // 7) Add final result to scene
               scene.add(object);
-
               updateStatus("✔ Model loaded perfectly!");
             },
-
-            // Progress
             (xhr) => {
               updateStatus(
                 "Loading OBJ: " +
@@ -1209,15 +1226,12 @@
                   "%"
               );
             },
-
-            // Error
             (err) => {
               updateStatus("❌ Error loading OBJ: " + err.message, true);
             }
           );
         });
 
-        // Animation loop
         function animate() {
           requestAnimationFrame(animate);
           controls.update();
@@ -1225,7 +1239,6 @@
         }
         animate();
 
-        // Handle resize
         window.addEventListener("resize", () => {
           const width = container.clientWidth;
           const height = container.clientHeight;
