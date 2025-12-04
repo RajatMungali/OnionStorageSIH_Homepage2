@@ -666,18 +666,130 @@
           display: none;
         }
       }
+
+      /* --- LANGUAGE TRANSLATOR --- */
+      .lang-widget {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 9999;
+      }
+
+      .lang-btn {
+        background: var(--accent-purple);
+        color: white;
+        border: none;
+        padding: 15px 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 0.9rem;
+        box-shadow: 0 10px 30px rgba(98, 0, 234, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .lang-btn:hover {
+        background: #4a00b0;
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(98, 0, 234, 0.4);
+      }
+
+      .lang-btn i {
+        font-size: 1.2rem;
+      }
+
+      .lang-dropdown {
+        position: absolute;
+        bottom: 70px;
+        right: 0;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        display: none;
+        min-width: 180px;
+      }
+
+      .lang-dropdown.active {
+        display: block;
+        animation: slideUp 0.3s ease;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .lang-option {
+        padding: 15px 20px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-weight: 600;
+        color: var(--text-dark);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .lang-option:hover {
+        background: var(--accent-purple-light);
+        color: var(--accent-purple);
+      }
+
+      .lang-option.selected {
+        background: var(--accent-purple);
+        color: white;
+      }
+
+      .lang-option i {
+        font-size: 1.1rem;
+      }
+
+      .translate-fade {
+        animation: fadeTranslate 0.4s ease;
+      }
+
+      @keyframes fadeTranslate {
+        0% {
+          opacity: 0.3;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .lang-widget {
+          bottom: 20px;
+          right: 20px;
+        }
+        .lang-btn {
+          padding: 12px 16px;
+          font-size: 0.85rem;
+        }
+      }
     </style>
   </head>
   <body>
     <nav>
       <div class="logo">SOS<span>.</span></div>
       <div class="nav-links">
-        <a href="#problem">Problem</a>
-        <a href="#model-3d">Product</a>
-        <a href="#benefits">Benefits</a>
+        <a href="#problem" data-translate="nav_problem">Problem</a>
+        <a href="#model-3d" data-translate="nav_product">Product</a>
+        <a href="#benefits" data-translate="nav_benefits">Benefits</a>
         <a
           href="#contact"
           class="btn-primary"
+          data-translate="nav_demo"
           style="
             padding: 8px 20px;
             margin-left: 20px;
@@ -695,15 +807,16 @@
       </video>
 
       <div class="hero-content" data-aos="fade-up">
-        <h1>Zero-Loss Onion Storage<br />for Indian Farmers</h1>
-        <p style="color: white; font-size: 1.2rem; margin-bottom: 30px">
+        <h1 data-translate="hero_title">Zero-Loss Onion Storage<br />for Indian Farmers</h1>
+        <p style="color: white; font-size: 1.2rem; margin-bottom: 30px" data-translate="hero_subtitle">
           Detected by YOLOv11, Protected by Bamboo.
         </p>
         <div>
-          <a href="#model-3d" class="btn btn-primary">Explore Product</a>
+          <a href="#model-3d" class="btn btn-primary" data-translate="hero_explore">Explore Product</a>
           <a
             href="https://sih-tau-mocha.vercel.app/"
             class="btn btn-outline"
+            data-translate="hero_signup"
             style="margin-left: 15px"
             >Sign Up</a
           >
@@ -712,25 +825,25 @@
     </section>
 
     <section id="problem" class="problem-section">
-      <h2 class="section-title">Why Onion Storage Fails</h2>
+      <h2 class="section-title" data-translate="problem_title">Why Onion Storage Fails</h2>
       <div class="stat-grid">
         <div class="stat-card" data-aos="fade-up">
           <div class="stat-num">40%</div>
-          <p>Annual Post-Harvest Loss.</p>
+          <p data-translate="problem_stat1">Annual Post-Harvest Loss.</p>
         </div>
         <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
           <div class="stat-num">
             <i class="fa-solid fa-temperature-arrow-up"></i>
           </div>
-          <p>Uncontrolled Heat Spikes.</p>
+          <p data-translate="problem_stat2">Uncontrolled Heat Spikes.</p>
         </div>
         <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
           <div class="stat-num"><i class="fa-solid fa-eye-slash"></i></div>
-          <p>Invisible Rot Inside Crates.</p>
+          <p data-translate="problem_stat3">Invisible Rot Inside Crates.</p>
         </div>
         <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
           <div class="stat-num">₹Cr</div>
-          <p>Financial Loss for Farmers.</p>
+          <p data-translate="problem_stat4">Financial Loss for Farmers.</p>
         </div>
       </div>
     </section>
@@ -752,8 +865,8 @@
     </section>
 
     <section id="model-3d" style="padding: 100px 5%; background: white">
-      <h2 class="section-title">Explore the Product</h2>
-      <p style="text-align: center; margin-bottom: 30px; color: #555">
+      <h2 class="section-title" data-translate="product_title">Explore the Product</h2>
+      <p style="text-align: center; margin-bottom: 30px; color: #555" data-translate="product_subtitle">
         Interactive 3D Bamboo Smart Crate
       </p>
       <div
@@ -780,9 +893,9 @@
       <div class="tech-half yolo-bg">
         <div class="yolo-content">
           <h2 style="color: white">
-            <i class="fa-solid fa-eye"></i> Intelligent Detection
+            <i class="fa-solid fa-eye"></i> <span data-translate="tech_detection_title">Intelligent Detection</span>
           </h2>
-          <p style="color: #eee; margin-bottom: 20px">
+          <p style="color: #eee; margin-bottom: 20px" data-translate="tech_detection_desc">
             See how our system analyzes onion quality in real-time.
           </p>
           <a href="#demo" style="display: inline-block; text-decoration: none">
@@ -802,16 +915,16 @@
               "
             >
               <i class="fa-solid fa-play-circle" style="font-size: 1.5rem"></i>
-              View Live Analysis
+              <span data-translate="tech_view_analysis">View Live Analysis</span>
             </div>
           </a>
         </div>
       </div>
       <div class="tech-half iot-bg">
         <h2 style="color: var(--accent-purple)">
-          <i class="fa-solid fa-wifi"></i> Sensor Ecosystem
+          <i class="fa-solid fa-wifi"></i> <span data-translate="tech_sensor_title">Sensor Ecosystem</span>
         </h2>
-        <p>Real-time environment sensing.</p>
+        <p data-translate="tech_sensor_desc">Real-time environment sensing.</p>
         <div style="margin-top: 30px">
           <div
             style="
@@ -825,7 +938,7 @@
               class="fa-solid fa-temperature-half"
               style="font-size: 2rem; color: orange"
             ></i>
-            <div><strong>DHT22</strong><br />Temperature & Humidity</div>
+            <div><strong>DHT22</strong><br /><span data-translate="tech_sensor1">Temperature & Humidity</span></div>
           </div>
           <div
             style="
@@ -839,19 +952,19 @@
               class="fa-solid fa-wind"
               style="font-size: 2rem; color: gray"
             ></i>
-            <div><strong>MQ-135</strong><br />Ammonia & Ethylene Gas</div>
+            <div><strong>MQ-135</strong><br /><span data-translate="tech_sensor2">Ammonia & Ethylene Gas</span></div>
           </div>
         </div>
       </div>
     </section>
     <section id="benefits" class="benefits-section">
-      <h2 class="section-title">Key Benefits of SOSMS</h2>
+      <h2 class="section-title" data-translate="benefits_title">Key Benefits of SOSMS</h2>
 
       <div class="benefits-grid">
         <div class="b-card" data-aos="fade-up" data-aos-delay="0">
           <div class="b-icon"><i class="fa-solid fa-chart-line"></i></div>
-          <h3>Reduce Losses by >40%</h3>
-          <p>
+          <h3 data-translate="benefit1_title">Reduce Losses by >40%</h3>
+          <p data-translate="benefit1_desc">
             Target the root causes of rot immediately using precision
             engineering, saving nearly half of the produce that usually goes to
             waste.
@@ -860,8 +973,8 @@
 
         <div class="b-card" data-aos="fade-up" data-aos-delay="100">
           <div class="b-icon"><i class="fa-solid fa-eye"></i></div>
-          <h3>Early Rot Detection</h3>
-          <p>
+          <h3 data-translate="benefit2_title">Early Rot Detection</h3>
+          <p data-translate="benefit2_desc">
             Our YOLOv11 AI model scans surface textures to identify fungal
             infections days before they become visible to the human eye.
           </p>
@@ -869,8 +982,8 @@
 
         <div class="b-card" data-aos="fade-up" data-aos-delay="200">
           <div class="b-icon"><i class="fa-solid fa-fan"></i></div>
-          <h3>Auto Climate Control</h3>
-          <p>
+          <h3 data-translate="benefit3_title">Auto Climate Control</h3>
+          <p data-translate="benefit3_desc">
             Smart sensors trigger ventilation fans automatically when humidity
             spikes, maintaining the perfect storage environment.
           </p>
@@ -878,8 +991,8 @@
 
         <div class="b-card" data-aos="fade-up" data-aos-delay="300">
           <div class="b-icon"><i class="fa-solid fa-solar-panel"></i></div>
-          <h3>Works in Rural India</h3>
-          <p>
+          <h3 data-translate="benefit4_title">Works in Rural India</h3>
+          <p data-translate="benefit4_desc">
             Designed for low-bandwidth areas. It runs on low power, works
             completely offline, and syncs data only when connectivity is
             available.
@@ -888,8 +1001,8 @@
 
         <div class="b-card" data-aos="fade-up" data-aos-delay="400">
           <div class="b-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-          <h3>Dashboard + SMS</h3>
-          <p>
+          <h3 data-translate="benefit5_title">Dashboard + SMS</h3>
+          <p data-translate="benefit5_desc">
             Get rich data on the web dashboard or simple, critical alerts via
             SMS on basic feature phones.
           </p>
@@ -897,8 +1010,8 @@
 
         <div class="b-card" data-aos="fade-up" data-aos-delay="500">
           <div class="b-icon"><i class="fa-solid fa-users"></i></div>
-          <h3>Community Affordable</h3>
-          <p>
+          <h3 data-translate="benefit6_title">Community Affordable</h3>
+          <p data-translate="benefit6_desc">
             Our pricing model allows Farmer Producer Organizations (FPOs) to
             pool resources, making smart storage accessible to everyone.
           </p>
@@ -916,25 +1029,25 @@
         "
       ></div>
       <div class="bamboo-content">
-        <h2>Why Bamboo?</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 30px">
+        <h2 data-translate="bamboo_title">Why Bamboo?</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 30px" data-translate="bamboo_subtitle">
           The Natural Advantage.
         </p>
         <ul class="bamboo-list">
           <li data-aos="fade-left" data-aos-delay="100">
-            <i class="fa-solid fa-check-circle"></i> Eco-friendly & Sustainable
+            <i class="fa-solid fa-check-circle"></i> <span data-translate="bamboo_point1">Eco-friendly & Sustainable</span>
           </li>
           <li data-aos="fade-left" data-aos-delay="200">
-            <i class="fa-solid fa-check-circle"></i> Naturally Breathable
-            Structure
+            <i class="fa-solid fa-check-circle"></i> <span data-translate="bamboo_point2">Naturally Breathable
+            Structure</span>
           </li>
           <li data-aos="fade-left" data-aos-delay="300">
-            <i class="fa-solid fa-check-circle"></i> Reduces Moisture
-            Accumulation
+            <i class="fa-solid fa-check-circle"></i> <span data-translate="bamboo_point3">Reduces Moisture
+            Accumulation</span>
           </li>
           <li data-aos="fade-left" data-aos-delay="400">
-            <i class="fa-solid fa-check-circle"></i> Low Cost & Locally
-            Available
+            <i class="fa-solid fa-check-circle"></i> <span data-translate="bamboo_point4">Low Cost & Locally
+            Available</span>
           </li>
         </ul>
       </div>
@@ -944,31 +1057,32 @@
       <h2
         class="section-title"
         style="margin-bottom: 40px; color: var(--text-dark)"
+        data-translate="results_title"
       >
         Impact & Results
       </h2>
       <div class="results-grid">
         <div data-aos="zoom-in">
           <div class="res-num">0%</div>
-          <div class="res-text">Loss in Trials</div>
+          <div class="res-text" data-translate="result1">Loss in Trials</div>
         </div>
         <div data-aos="zoom-in" data-aos-delay="100">
           <div class="res-num">98%</div>
-          <div class="res-text">YOLOv11 Accuracy</div>
+          <div class="res-text" data-translate="result2">YOLOv11 Accuracy</div>
         </div>
         <div data-aos="zoom-in" data-aos-delay="200">
           <div class="res-num">50+</div>
-          <div class="res-text">Farmers Tested</div>
+          <div class="res-text" data-translate="result3">Farmers Tested</div>
         </div>
         <div data-aos="zoom-in" data-aos-delay="300">
           <div class="res-num">24/7</div>
-          <div class="res-text">Continuous Monitoring</div>
+          <div class="res-text" data-translate="result4">Continuous Monitoring</div>
         </div>
       </div>
     </section>
 
     <section class="test-section">
-      <h2 class="section-title">Farmer Testimonials</h2>
+      <h2 class="section-title" data-translate="testimonials_title">Farmer Testimonials</h2>
       <div class="test-grid">
         <div class="test-card" data-aos="fade-up">
           <div class="test-header">
@@ -982,7 +1096,7 @@
               <small>Nasik, Maharashtra</small>
             </div>
           </div>
-          <p class="test-quote">
+          <p class="test-quote" data-translate="test1_quote">
             "SOSMS saved 30% of my harvest this season. The mobile alerts told
             me exactly which crate had an issue."
           </p>
@@ -999,7 +1113,7 @@
               <small>Pune, Maharashtra</small>
             </div>
           </div>
-          <p class="test-quote">
+          <p class="test-quote" data-translate="test2_quote">
             "The bamboo design is very sturdy and the technology is easy to use
             even for my father."
           </p>
@@ -1016,7 +1130,7 @@
               <small>Solapur, Maharashtra</small>
             </div>
           </div>
-          <p class="test-quote">
+          <p class="test-quote" data-translate="test3_quote">
             "Zero loss this year. The investment paid for itself in just one
             season of storage."
           </p>
@@ -1025,11 +1139,11 @@
     </section>
 
     <section class="faq-section">
-      <h2 class="section-title">Frequently Asked Questions (FAQ)</h2>
+      <h2 class="section-title" data-translate="faq_title">Frequently Asked Questions (FAQ)</h2>
       <div class="faq-item">
         <details>
-          <summary>How does early rot detection work?</summary>
-          <p>
+          <summary data-translate="faq1_q">How does early rot detection work?</summary>
+          <p data-translate="faq1_a">
             We use a specialized AI model called YOLOv11 trained on thousands of
             onion images. It detects subtle changes in skin texture.
           </p>
@@ -1037,8 +1151,8 @@
       </div>
       <div class="faq-item">
         <details>
-          <summary>Do farmers need internet?</summary>
-          <p>
+          <summary data-translate="faq2_q">Do farmers need internet?</summary>
+          <p data-translate="faq2_a">
             No, continuous internet is not required. The system works offline
             and stores data locally.
           </p>
@@ -1046,8 +1160,8 @@
       </div>
       <div class="faq-item">
         <details>
-          <summary>How accurate is the model?</summary>
-          <p>
+          <summary data-translate="faq3_q">How accurate is the model?</summary>
+          <p data-translate="faq3_a">
             Our current field tests show a 98% accuracy rate in detecting common
             onion rot types.
           </p>
@@ -1055,8 +1169,8 @@
       </div>
       <div class="faq-item">
         <details>
-          <summary>Can it work in extreme heat?</summary>
-          <p>
+          <summary data-translate="faq4_q">Can it work in extreme heat?</summary>
+          <p data-translate="faq4_a">
             Yes. The bamboo structure naturally regulates temperature, and
             electronics are heat-shielded.
           </p>
@@ -1065,16 +1179,16 @@
     </section>
 
     <section id="contact" class="contact-section">
-      <h2 class="section-title">Get Started / Contact Us</h2>
+      <h2 class="section-title" data-translate="contact_title">Get Started / Contact Us</h2>
       <div class="form-box">
-        <input type="text" placeholder="Your Name" />
-        <input type="text" placeholder="Farm / Company Name" />
+        <input type="text" data-translate-placeholder="form_name" placeholder="Your Name" />
+        <input type="text" data-translate-placeholder="form_company" placeholder="Farm / Company Name" />
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
-          <input type="text" placeholder="Phone" />
-          <input type="number" placeholder="Quantity Required" />
+          <input type="text" data-translate-placeholder="form_phone" placeholder="Phone" />
+          <input type="number" data-translate-placeholder="form_quantity" placeholder="Quantity Required" />
         </div>
-        <textarea rows="5" placeholder="Message"></textarea>
-        <button class="btn btn-primary" style="justify-content: center">
+        <textarea rows="5" data-translate-placeholder="form_message" placeholder="Message"></textarea>
+        <button class="btn btn-primary" data-translate="form_submit" style="justify-content: center">
           Send Inquiry
         </button>
       </div>
@@ -1084,14 +1198,14 @@
       <div class="footer-grid">
         <div>
           <div class="f-title">SOS.</div>
-          <p>AI + IoT + Bamboo Engineering</p>
+          <p data-translate="footer_tagline">AI + IoT + Bamboo Engineering</p>
         </div>
         <div>
-          <div class="f-title">Quick Links</div>
-          <p>Problem • Solution • Impact</p>
+          <div class="f-title" data-translate="footer_links_title">Quick Links</div>
+          <p data-translate="footer_links">Problem • Solution • Impact</p>
         </div>
         <div>
-          <div class="f-title">Contact</div>
+          <div class="f-title" data-translate="footer_contact_title">Contact</div>
           <p>team@big0.sih</p>
           <p>+91 98765 43210</p>
         </div>
@@ -1103,10 +1217,32 @@
           border-top: 1px solid #333;
           padding-top: 20px;
         "
+        data-translate="footer_copyright"
       >
         &copy; 2025 BigO. All rights reserved.
       </div>
     </footer>
+
+    <div class="lang-widget">
+      <button class="lang-btn" id="langBtn">
+        <i class="fa-solid fa-language"></i>
+        <span id="currentLang">English</span>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <div class="lang-option selected" data-lang="en">
+          <i class="fa-solid fa-check"></i>
+          <span>English</span>
+        </div>
+        <div class="lang-option" data-lang="hi">
+          <i class="fa-solid fa-circle"></i>
+          <span>हिंदी (Hindi)</span>
+        </div>
+        <div class="lang-option" data-lang="mr">
+          <i class="fa-solid fa-circle"></i>
+          <span>मराठी (Marathi)</span>
+        </div>
+      </div>
+    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -1252,6 +1388,311 @@
         updateStatus("❌ Critical Error: " + err.message, true);
         console.error(err);
       }
+    </script>
+
+    <script>
+      const translations = {
+        en: {
+          nav_problem: "Problem",
+          nav_product: "Product",
+          nav_benefits: "Benefits",
+          nav_demo: "Demo",
+          hero_title: "Zero-Loss Onion Storage<br />for Indian Farmers",
+          hero_subtitle: "Detected by YOLOv11, Protected by Bamboo.",
+          hero_explore: "Explore Product",
+          hero_signup: "Sign Up",
+          problem_title: "Why Onion Storage Fails",
+          problem_stat1: "Annual Post-Harvest Loss.",
+          problem_stat2: "Uncontrolled Heat Spikes.",
+          problem_stat3: "Invisible Rot Inside Crates.",
+          problem_stat4: "Financial Loss for Farmers.",
+          product_title: "Explore the Product",
+          product_subtitle: "Interactive 3D Bamboo Smart Crate",
+          tech_detection_title: "Intelligent Detection",
+          tech_detection_desc: "See how our system analyzes onion quality in real-time.",
+          tech_view_analysis: "View Live Analysis",
+          tech_sensor_title: "Sensor Ecosystem",
+          tech_sensor_desc: "Real-time environment sensing.",
+          tech_sensor1: "Temperature & Humidity",
+          tech_sensor2: "Ammonia & Ethylene Gas",
+          benefits_title: "Key Benefits of SOSMS",
+          benefit1_title: "Reduce Losses by >40%",
+          benefit1_desc: "Target the root causes of rot immediately using precision engineering, saving nearly half of the produce that usually goes to waste.",
+          benefit2_title: "Early Rot Detection",
+          benefit2_desc: "Our YOLOv11 AI model scans surface textures to identify fungal infections days before they become visible to the human eye.",
+          benefit3_title: "Auto Climate Control",
+          benefit3_desc: "Smart sensors trigger ventilation fans automatically when humidity spikes, maintaining the perfect storage environment.",
+          benefit4_title: "Works in Rural India",
+          benefit4_desc: "Designed for low-bandwidth areas. It runs on low power, works completely offline, and syncs data only when connectivity is available.",
+          benefit5_title: "Dashboard + SMS",
+          benefit5_desc: "Get rich data on the web dashboard or simple, critical alerts via SMS on basic feature phones.",
+          benefit6_title: "Community Affordable",
+          benefit6_desc: "Our pricing model allows Farmer Producer Organizations (FPOs) to pool resources, making smart storage accessible to everyone.",
+          bamboo_title: "Why Bamboo?",
+          bamboo_subtitle: "The Natural Advantage.",
+          bamboo_point1: "Eco-friendly & Sustainable",
+          bamboo_point2: "Naturally Breathable Structure",
+          bamboo_point3: "Reduces Moisture Accumulation",
+          bamboo_point4: "Low Cost & Locally Available",
+          results_title: "Impact & Results",
+          result1: "Loss in Trials",
+          result2: "YOLOv11 Accuracy",
+          result3: "Farmers Tested",
+          result4: "Continuous Monitoring",
+          testimonials_title: "Farmer Testimonials",
+          test1_quote: '"SOSMS saved 30% of my harvest this season. The mobile alerts told me exactly which crate had an issue."',
+          test2_quote: '"The bamboo design is very sturdy and the technology is easy to use even for my father."',
+          test3_quote: '"Zero loss this year. The investment paid for itself in just one season of storage."',
+          faq_title: "Frequently Asked Questions (FAQ)",
+          faq1_q: "How does early rot detection work?",
+          faq1_a: "We use a specialized AI model called YOLOv11 trained on thousands of onion images. It detects subtle changes in skin texture.",
+          faq2_q: "Do farmers need internet?",
+          faq2_a: "No, continuous internet is not required. The system works offline and stores data locally.",
+          faq3_q: "How accurate is the model?",
+          faq3_a: "Our current field tests show a 98% accuracy rate in detecting common onion rot types.",
+          faq4_q: "Can it work in extreme heat?",
+          faq4_a: "Yes. The bamboo structure naturally regulates temperature, and electronics are heat-shielded.",
+          contact_title: "Get Started / Contact Us",
+          form_name: "Your Name",
+          form_company: "Farm / Company Name",
+          form_phone: "Phone",
+          form_quantity: "Quantity Required",
+          form_message: "Message",
+          form_submit: "Send Inquiry",
+          footer_tagline: "AI + IoT + Bamboo Engineering",
+          footer_links_title: "Quick Links",
+          footer_links: "Problem • Solution • Impact",
+          footer_contact_title: "Contact",
+          footer_copyright: "© 2025 BigO. All rights reserved."
+        },
+        hi: {
+          nav_problem: "समस्या",
+          nav_product: "उत्पाद",
+          nav_benefits: "लाभ",
+          nav_demo: "डेमो",
+          hero_title: "भारतीय किसानों के लिए<br />शून्य-हानि प्याज भंडारण",
+          hero_subtitle: "YOLOv11 द्वारा पता लगाया, बांस द्वारा सुरक्षित।",
+          hero_explore: "उत्पाद देखें",
+          hero_signup: "साइन अप करें",
+          problem_title: "प्याज भंडारण क्यों विफल होता है",
+          problem_stat1: "वार्षिक कटाई के बाद की हानि।",
+          problem_stat2: "अनियंत्रित गर्मी की वृद्धि।",
+          problem_stat3: "क्रेट के अंदर अदृश्य सड़न।",
+          problem_stat4: "किसानों के लिए वित्तीय हानि।",
+          product_title: "उत्पाद का अन्वेषण करें",
+          product_subtitle: "इंटरेक्टिव 3D बांस स्मार्ट क्रेट",
+          tech_detection_title: "बुद्धिमान पहचान",
+          tech_detection_desc: "देखें कि हमारा सिस्टम रीयल-टाइम में प्याज की गुणवत्ता का विश्लेषण कैसे करता है।",
+          tech_view_analysis: "लाइव विश्लेषण देखें",
+          tech_sensor_title: "सेंसर इकोसिस्टम",
+          tech_sensor_desc: "रीयल-टाइम पर्यावरण संवेदन।",
+          tech_sensor1: "तापमान और आर्द्रता",
+          tech_sensor2: "अमोनिया और एथिलीन गैस",
+          benefits_title: "SOSMS के मुख्य लाभ",
+          benefit1_title: "40% से अधिक हानि कम करें",
+          benefit1_desc: "सटीक इंजीनियरिंग का उपयोग करके सड़न के मूल कारणों को तुरंत लक्षित करें, उत्पाद का लगभग आधा हिस्सा बचाएं जो आमतौर पर बर्बाद हो जाता है।",
+          benefit2_title: "प्रारंभिक सड़न का पता लगाना",
+          benefit2_desc: "हमारा YOLOv11 AI मॉडल सतह की बनावट को स्कैन करता है और फंगल संक्रमण की पहचान करता है, जो मानव आंखों को दिखाई देने से कई दिन पहले होता है।",
+          benefit3_title: "ऑटो जलवायु नियंत्रण",
+          benefit3_desc: "स्मार्ट सेंसर आर्द्रता बढ़ने पर वेंटिलेशन पंखे को स्वचालित रूप से चालू करते हैं, सही भंडारण वातावरण बनाए रखते हैं।",
+          benefit4_title: "ग्रामीण भारत में काम करता है",
+          benefit4_desc: "कम बैंडविड्थ क्षेत्रों के लिए डिज़ाइन किया गया। यह कम बिजली पर चलता है, पूरी तरह से ऑफ़लाइन काम करता है, और केवल कनेक्टिविटी उपलब्ध होने पर डेटा सिंक करता है।",
+          benefit5_title: "डैशबोर्ड + एसएमएस",
+          benefit5_desc: "वेब डैशबोर्ड पर समृद्ध डेटा प्राप्त करें या बुनियादी फीचर फोन पर एसएमएस के माध्यम से सरल, महत्वपूर्ण अलर्ट प्राप्त करें।",
+          benefit6_title: "सामुदायिक रूप से सस्ती",
+          benefit6_desc: "हमारा मूल्य निर्धारण मॉडल किसान उत्पादक संगठनों (FPO) को संसाधनों को पूल करने की अनुमति देता है, जिससे स्मार्ट भंडारण सभी के लिए सुलभ हो जाता है।",
+          bamboo_title: "बांस क्यों?",
+          bamboo_subtitle: "प्राकृतिक लाभ।",
+          bamboo_point1: "पर्यावरण के अनुकूल और टिकाऊ",
+          bamboo_point2: "प्राकृतिक रूप से सांस लेने योग्य संरचना",
+          bamboo_point3: "नमी संचय को कम करता है",
+          bamboo_point4: "कम लागत और स्थानीय रूप से उपलब्ध",
+          results_title: "प्रभाव और परिणाम",
+          result1: "परीक्षणों में हानि",
+          result2: "YOLOv11 सटीकता",
+          result3: "परीक्षण किए गए किसान",
+          result4: "निरंतर निगरानी",
+          testimonials_title: "किसान प्रशंसापत्र",
+          test1_quote: '"SOSMS ने इस सीजन में मेरी फसल का 30% बचाया। मोबाइल अलर्ट ने मुझे बताया कि किस क्रेट में समस्या थी।"',
+          test2_quote: '"बांस का डिज़ाइन बहुत मजबूत है और तकनीक मेरे पिता के लिए भी उपयोग करना आसान है।"',
+          test3_quote: '"इस साल शून्य नुकसान। निवेश ने भंडारण के सिर्फ एक सीजन में खुद को चुका दिया।"',
+          faq_title: "अक्सर पूछे जाने वाले प्रश्न (FAQ)",
+          faq1_q: "प्रारंभिक सड़न का पता कैसे काम करता है?",
+          faq1_a: "हम हजारों प्याज छवियों पर प्रशिक्षित YOLOv11 नामक एक विशेष AI मॉडल का उपयोग करते हैं। यह त्वचा की बनावट में सूक्ष्म परिवर्तनों का पता लगाता है।",
+          faq2_q: "क्या किसानों को इंटरनेट की आवश्यकता है?",
+          faq2_a: "नहीं, निरंतर इंटरनेट की आवश्यकता नहीं है। सिस्टम ऑफ़लाइन काम करता है और डेटा को स्थानीय रूप से संग्रहीत करता है।",
+          faq3_q: "मॉडल कितना सटीक है?",
+          faq3_a: "हमारे वर्तमान फील्ड परीक्षण सामान्य प्याज सड़न प्रकारों का पता लगाने में 98% सटीकता दर दिखाते हैं।",
+          faq4_q: "क्या यह अत्यधिक गर्मी में काम कर सकता है?",
+          faq4_a: "हाँ। बांस की संरचना स्वाभाविक रूप से तापमान को नियंत्रित करती है, और इलेक्ट्रॉनिक्स गर्मी से बचाव के लिए ढाली गई हैं।",
+          contact_title: "शुरू करें / हमसे संपर्क करें",
+          form_name: "आपका नाम",
+          form_company: "फार्म / कंपनी का नाम",
+          form_phone: "फोन",
+          form_quantity: "आवश्यक मात्रा",
+          form_message: "संदेश",
+          form_submit: "पूछताछ भेजें",
+          footer_tagline: "AI + IoT + बांस इंजीनियरिंग",
+          footer_links_title: "त्वरित लिंक",
+          footer_links: "समस्या • समाधान • प्रभाव",
+          footer_contact_title: "संपर्क",
+          footer_copyright: "© 2025 BigO. सर्वाधिकार सुरक्षित।"
+        },
+        mr: {
+          nav_problem: "समस्या",
+          nav_product: "उत्पादन",
+          nav_benefits: "फायदे",
+          nav_demo: "डेमो",
+          hero_title: "भारतीय शेतकऱ्यांसाठी<br />शून्य-नुकसान कांदा साठवण",
+          hero_subtitle: "YOLOv11 द्वारे शोधले, बांबूद्वारे संरक्षित.",
+          hero_explore: "उत्पादन पहा",
+          hero_signup: "साइन अप करा",
+          problem_title: "कांदा साठवण का अपयशी ठरते",
+          problem_stat1: "वार्षिक कापणीनंतरचे नुकसान.",
+          problem_stat2: "अनियंत्रित उष्णता वाढ.",
+          problem_stat3: "क्रेटमध्ये अदृश्य सडणे.",
+          problem_stat4: "शेतकऱ्यांसाठी आर्थिक नुकसान.",
+          product_title: "उत्पादनाचा शोध घ्या",
+          product_subtitle: "इंटरॅक्टिव्ह 3D बांबू स्मार्ट क्रेट",
+          tech_detection_title: "बुद्धिमान शोध",
+          tech_detection_desc: "आमची प्रणाली रिअल-टाइममध्ये कांद्याच्या गुणवत्तेचे विश्लेषण कसे करते ते पहा.",
+          tech_view_analysis: "लाइव्ह विश्लेषण पहा",
+          tech_sensor_title: "सेन्सर इकोसिस्टम",
+          tech_sensor_desc: "रिअल-टाइम पर्यावरण संवेदन.",
+          tech_sensor1: "तापमान आणि आर्द्रता",
+          tech_sensor2: "अमोनिया आणि इथिलीन वायू",
+          benefits_title: "SOSMS चे मुख्य फायदे",
+          benefit1_title: "40% पेक्षा जास्त नुकसान कमी करा",
+          benefit1_desc: "अचूक अभियांत्रिकी वापरून सडणाऱ्या मूळ कारणांना लक्ष्य करा, उत्पादनाचा जवळपास अर्धा भाग वाचवा जो सामान्यतः वाया जातो.",
+          benefit2_title: "लवकर सडणे शोध",
+          benefit2_desc: "आमचे YOLOv11 AI मॉडेल पृष्ठभागाच्या रचनेचे स्कॅन करते आणि बुरशीजन्य संक्रमण ओळखते, जे मानवी डोळ्यांना दिसण्यापूर्वी अनेक दिवस आधी होते.",
+          benefit3_title: "ऑटो हवामान नियंत्रण",
+          benefit3_desc: "स्मार्ट सेन्सर आर्द्रता वाढल्यावर वेंटिलेशन पंखे स्वयंचलितपणे चालू करतात, योग्य साठवण वातावरण राखतात.",
+          benefit4_title: "ग्रामीण भारतात कार्य करते",
+          benefit4_desc: "कमी बँडविड्थ क्षेत्रांसाठी डिझाइन केलेले. हे कमी वीजेवर चालते, पूर्णपणे ऑफलाइन कार्य करते आणि केवळ कनेक्टिव्हिटी उपलब्ध असताना डेटा समक्रमित करते.",
+          benefit5_title: "डॅशबोर्ड + एसएमएस",
+          benefit5_desc: "वेब डॅशबोर्डवर समृद्ध डेटा मिळवा किंवा मूलभूत फीचर फोनवर एसएमएसद्वारे साधे, गंभीर अलर्ट मिळवा.",
+          benefit6_title: "समुदाय परवडणारे",
+          benefit6_desc: "आमचे किंमत मॉडेल शेतकरी उत्पादक संघटना (FPOs) ला संसाधने एकत्र करण्याची परवानगी देते, ज्यामुळे स्मार्ट साठवण सर्वांसाठी प्रवेशयोग्य होते.",
+          bamboo_title: "बांबू का?",
+          bamboo_subtitle: "नैसर्गिक फायदा.",
+          bamboo_point1: "पर्यावरणपूरक आणि टिकाऊ",
+          bamboo_point2: "नैसर्गिकरित्या श्वास घेण्यायोग्य संरचना",
+          bamboo_point3: "आर्द्रता संचय कमी करते",
+          bamboo_point4: "कमी खर्च आणि स्थानिक पातळीवर उपलब्ध",
+          results_title: "प्रभाव आणि परिणाम",
+          result1: "चाचण्यांमध्ये नुकसान",
+          result2: "YOLOv11 अचूकता",
+          result3: "चाचणी केलेले शेतकरी",
+          result4: "सतत निरीक्षण",
+          testimonials_title: "शेतकरी प्रशंसापत्रे",
+          test1_quote: '"SOSMS ने या हंगामात माझ्या कापणीचे 30% वाचवले. मोबाईल अलर्टने मला सांगितले की कोणत्या क्रेटमध्ये समस्या आहे."',
+          test2_quote: '"बांबूची रचना खूप मजबूत आहे आणि तंत्रज्ञान माझ्या वडिलांसाठी देखील वापरण्यास सोपे आहे."',
+          test3_quote: '"या वर्षी शून्य नुकसान. गुंतवणूकीने साठवणाच्या फक्त एका हंगामात स्वतःला परत केले."',
+          faq_title: "वारंवार विचारले जाणारे प्रश्न (FAQ)",
+          faq1_q: "लवकर सडणे शोध कसे कार्य करते?",
+          faq1_a: "आम्ही हजारो कांदा प्रतिमांवर प्रशिक्षित YOLOv11 नावाचा एक विशेष AI मॉडेल वापरतो. ते त्वचेच्या रचनेतील सूक्ष्म बदल शोधते.",
+          faq2_q: "शेतकऱ्यांना इंटरनेटची आवश्यकता आहे का?",
+          faq2_a: "नाही, सतत इंटरनेटची आवश्यकता नाही. प्रणाली ऑफलाइन कार्य करते आणि डेटा स्थानिकरित्या संचयित करते.",
+          faq3_q: "मॉडेल किती अचूक आहे?",
+          faq3_a: "आमच्या वर्तमान फील्ड चाचण्या सामान्य कांदा सडणे प्रकार शोधण्यात 98% अचूकता दर दर्शवतात.",
+          faq4_q: "ते अत्यंत उष्णतेमध्ये कार्य करू शकते का?",
+          faq4_a: "होय. बांबूची रचना नैसर्गिकरित्या तापमान नियंत्रित करते आणि इलेक्ट्रॉनिक्स उष्णतेपासून संरक्षित आहेत.",
+          contact_title: "प्रारंभ करा / आमच्याशी संपर्क साधा",
+          form_name: "तुमचे नाव",
+          form_company: "फार्म / कंपनीचे नाव",
+          form_phone: "फोन",
+          form_quantity: "आवश्यक प्रमाण",
+          form_message: "संदेश",
+          form_submit: "चौकशी पाठवा",
+          footer_tagline: "AI + IoT + बांबू अभियांत्रिकी",
+          footer_links_title: "द्रुत दुवे",
+          footer_links: "समस्या • उपाय • प्रभाव",
+          footer_contact_title: "संपर्क",
+          footer_copyright: "© 2025 BigO. सर्व हक्क राखीव."
+        }
+      };
+
+      let currentLanguage = localStorage.getItem('selectedLanguage') || 'en';
+
+      const langBtn = document.getElementById('langBtn');
+      const langDropdown = document.getElementById('langDropdown');
+      const currentLangSpan = document.getElementById('currentLang');
+      const langOptions = document.querySelectorAll('.lang-option');
+
+      function translatePage(lang) {
+        const elements = document.querySelectorAll('[data-translate]');
+
+        elements.forEach(element => {
+          const key = element.getAttribute('data-translate');
+          if (translations[lang] && translations[lang][key]) {
+            element.classList.add('translate-fade');
+            setTimeout(() => {
+              element.innerHTML = translations[lang][key];
+              setTimeout(() => {
+                element.classList.remove('translate-fade');
+              }, 400);
+            }, 150);
+          }
+        });
+
+        const placeholderElements = document.querySelectorAll('[data-translate-placeholder]');
+        placeholderElements.forEach(element => {
+          const key = element.getAttribute('data-translate-placeholder');
+          if (translations[lang] && translations[lang][key]) {
+            element.placeholder = translations[lang][key];
+          }
+        });
+      }
+
+      function updateLanguageButton(lang) {
+        const langNames = {
+          en: 'English',
+          hi: 'हिंदी',
+          mr: 'मराठी'
+        };
+        currentLangSpan.textContent = langNames[lang];
+      }
+
+      function setSelectedLanguage(lang) {
+        langOptions.forEach(option => {
+          const optionLang = option.getAttribute('data-lang');
+          if (optionLang === lang) {
+            option.classList.add('selected');
+            option.querySelector('i').className = 'fa-solid fa-check';
+          } else {
+            option.classList.remove('selected');
+            option.querySelector('i').className = 'fa-solid fa-circle';
+          }
+        });
+      }
+
+      langBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langDropdown.classList.toggle('active');
+      });
+
+      langOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          const selectedLang = option.getAttribute('data-lang');
+          currentLanguage = selectedLang;
+          localStorage.setItem('selectedLanguage', selectedLang);
+          translatePage(selectedLang);
+          updateLanguageButton(selectedLang);
+          setSelectedLanguage(selectedLang);
+          langDropdown.classList.remove('active');
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!langBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+          langDropdown.classList.remove('active');
+        }
+      });
+
+      translatePage(currentLanguage);
+      updateLanguageButton(currentLanguage);
+      setSelectedLanguage(currentLanguage);
     </script>
   </body>
 </html>
